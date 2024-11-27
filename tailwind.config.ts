@@ -18,9 +18,9 @@ const config: Config = {
   			error: '#b80000',
   			green: '#3DD9B3',
   			blue: {
-          '500': '#0EA5E9', // Primary Sky Blue
-          '700': '#0369A1' // Secondary Deep Blue
-        },
+  				'500': '#0EA5E9',
+  				'700': '#0369A1'
+  			},
   			pink: '#EEA8FD',
   			orange: '#F9AB72',
   			light: {
@@ -29,17 +29,16 @@ const config: Config = {
   				'300': '#F2F5F9',
   				'400': '#F2F4F8'
   			},
-        gray: {
-          '50': '#F5F5F5', // Background Soft White
-          '300': '#E0E0E0', // Accent Light Gray
-          '800': '#333333' // Text Charcoal Gray
-        },
+  			gray: {
+  				'50': '#F5F5F5',
+  				'300': '#E0E0E0',
+  				'800': '#333333'
+  			},
   			dark: {
   				'100': '#04050C',
   				'200': '#131524'
   			},
-        background: '#F5F5F5', // Background color
-        
+  			background: '#F5F5F5',
   			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
@@ -50,17 +49,17 @@ const config: Config = {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-          DEFAULT: '#0EA5E9', // Sky Blue
-          foreground: '#FFFFFF' // White for text on primary
-        },
-        secondary: {
-          DEFAULT: '#0369A1', // Deep Blue
-          foreground: '#FFFFFF' // White for text on secondary
-        },
+  				DEFAULT: '#0EA5E9',
+  				foreground: '#FFFFFF'
+  			},
+  			secondary: {
+  				DEFAULT: '#0369A1',
+  				foreground: '#FFFFFF'
+  			},
   			muted: {
-          DEFAULT: '#E0E0E0', // Light Gray
-          foreground: '#333333' // Dark Gray text on muted background
-        },
+  				DEFAULT: '#E0E0E0',
+  				foreground: '#333333'
+  			},
   			accent: {
   				DEFAULT: 'hsl(var(--accent))',
   				foreground: 'hsl(var(--accent-foreground))'

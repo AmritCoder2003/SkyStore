@@ -149,7 +149,7 @@
   }
 
   .shad-form-item {
-    @apply flex h-[78px] flex-col justify-center rounded-xl border border-light-300 px-4 shadow-drop-1;
+    @apply flex md:bg-white h-[78px] flex-col justify-center rounded-xl border border-light-300 px-4 shadow-drop-1;
   }
   .shad-form-label {
     @apply text-light-100 pt-2 body-2 w-full !important;
@@ -167,7 +167,7 @@
     @apply w-full flex gap-1 sm:gap-2 justify-between !important;
   }
   .shad-otp-slot {
-    @apply text-[40px] font-medium rounded-xl ring-brand shadow-drop-1 text-brand-100 justify-center flex border-2 border-light-300 size-12 md:size-16 gap-5 !important;
+    @apply text-[40px] font-medium rounded-xl ring-brand shadow-drop-1 text-blue-800 justify-center flex border-2 border-light-300 size-12 md:size-16 gap-5 !important;
   }
 
   .shad-sheet {
@@ -297,16 +297,16 @@
 
   /* AuthForm */
   .auth-form {
-    @apply flex max-h-[800px] w-full max-w-[580px] flex-col justify-center space-y-6 transition-all lg:h-full lg:space-y-8 !important;
+    @apply mt-[-30px] flex max-h-[800px] w-full max-w-[580px] flex-col justify-center space-y-6 transition-all lg:h-full lg:space-y-8 !important;
   }
   .form-title {
-    @apply h1 text-center text-light-100 md:text-left !important;
+    @apply h1 text-center lg:text-white md:text-light-100  md:text-left !important;
   }
   .form-submit-button {
-    @apply primary-btn h-[66px] !important;
+    @apply primary-btn md:bg-blue-700 md:text-white h-[66px] !important;
   }
   .error-message {
-    @apply body-2 mx-auto w-fit rounded-xl bg-error/5 px-8 py-4 text-center text-error !important;
+    @apply body-2 mx-auto w-fit rounded-xl md:text-white md:bg-error/20  bg-error/5  px-8 py-4 text-center text-error !important;
   }
 
   /* Card */
