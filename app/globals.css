@@ -192,7 +192,7 @@
 
   /* Sidebar & MobileNavigation */
   .nav-icon {
-    @apply w-6 filter invert opacity-25 !important;
+    @apply w-6 filter invert opacity-75 !important;
   }
   .nav-icon-active {
     @apply invert-0 opacity-100 !important;
@@ -202,7 +202,7 @@
 
   /* Root Layout */
   .main-content {
-    @apply remove-scrollbar h-full flex-1 overflow-auto bg-light-400 px-5 py-7 sm:mr-7 sm:rounded-[30px] md:mb-7 md:px-9 md:py-10 !important;
+    @apply remove-scrollbar h-full flex-1 overflow-auto bg-sky-200 px-5 py-7 sm:mr-7 sm:rounded-[30px] md:mb-7 md:px-9 md:py-10 !important;
   }
 
   /* Dashboard */
@@ -422,7 +422,7 @@
     @apply h5 mt-9 flex-1 gap-1 text-brand !important;
   }
   .sidebar-nav-item {
-    @apply flex text-light-100 gap-4 rounded-xl lg:w-full justify-center lg:justify-start items-center h5 lg:px-[30px] h-[52px] lg:rounded-full !important;
+    @apply flex text-light-100 gap-4 rounded-xl lg:w-full justify-center lg:justify-start items-center h5 lg:px-[30px] h-[42px] lg:rounded-full !important;
   }
   .sidebar-user-info {
     @apply mt-4 flex items-center justify-center gap-2 rounded-full bg-brand/10 p-1 text-light-100 lg:justify-start lg:p-3 !important;
