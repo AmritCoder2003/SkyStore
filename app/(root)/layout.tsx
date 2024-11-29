@@ -12,7 +12,8 @@ const layout = async ({children}: {children: React.ReactNode}) => {
     <main className='flex h-screen' >
       <Sidebar fullName={currentUser.fullName} email={currentUser.email} avatar={currentUser.avatar} />
       <section className='flex h-full flex-1 flex-col' >
-        <MobileNavigation /><Header />
+        <MobileNavigation 
+        {...currentUser} /><Header />
         <div className='main-content '>{children}</div>
       </section>
     </main>

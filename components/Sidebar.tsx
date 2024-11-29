@@ -5,7 +5,8 @@ import Link from "next/link";
 import { LayoutDashboard, Files, Images, CirclePlay, Grid2x2 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { UserRound } from 'lucide-react';
+
+
 
 const Sidebar = ({fullName, email, avatar}: {fullName: string, email: string, avatar: string}) => {
   const navItems = [

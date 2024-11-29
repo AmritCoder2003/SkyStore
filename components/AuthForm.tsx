@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import Image from "next/image"
 import Link from "next/link"
-import { createAccount} from '@/lib/actions/user.actions'
+import { createAccount, signInUser} from '@/lib/actions/user.actions'
 
 import React, { useState } from 'react'
 type FormType = 'sign-in' | 'sign-up'
@@ -49,7 +49,7 @@ const AuthForm = ({type}: {type: FormType}) => {
     setIsLoading(true);
     setErrorMessage('')
     try{
-      const user = await createAccount(
+      const user = type==='sign-in' ? await signInUser({email: values.email}) :  await createAccount(
         {
           fullName: values.fullName || "",
           email: values.email
