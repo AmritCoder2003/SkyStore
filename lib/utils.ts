@@ -1,10 +1,115 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
-export const parseStringify = (value:unknown) =>{
+export const parseStringify = (value: unknown) => {
   return JSON.parse(JSON.stringify(value));
-}
+};
+
+export const getFileType = (fileName: string) => {
+  const extension = fileName.split(".").pop()?.toLowerCase();
+
+  if (!extension) return { type: "other", extension: "" };
+
+  const documentExtensions = [
+    "pdf",
+    "doc",
+    "docx",
+    "txt",
+    "xls",
+    "xlsx",
+    "csv",
+    "rtf",
+    "ods",
+    "ppt",
+    "odp",
+    "md",
+    "html",
+    "htm",
+    "epub",
+    "pages",
+    "fig",
+    "psd",
+    "ai",
+    "indd",
+    "xd",
+    "sketch",
+    "afdesign",
+    "afphoto",
+    "afphoto",
+  ];
+  const imageExtensions = ["jpg", "jpeg", "png", "gif", "bmp", "svg", "webp"];
+  const videoExtensions = ["mp4", "avi", "mov", "mkv", "webm"];
+  const audioExtensions = ["mp3", "wav", "ogg", "flac"];
+
+  if (documentExtensions.includes(extension))
+    return { type: "document", extension };
+  if (imageExtensions.includes(extension)) return { type: "image", extension };
+  if (videoExtensions.includes(extension)) return { type: "video", extension };
+  if (audioExtensions.includes(extension)) return { type: "audio", extension };
+
+  return { type: "other", extension };
+};
+export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
+
+export const getFileIcon = (extension: string | undefined, type: string) => {
+  switch (extension) {
+    case "pdf":
+      return "/file-pdf.svg";
+    case "doc":
+      return "/file-doc.svg";
+    case "docx":
+      return "/file-docx.svg";
+    case "csv":
+      return "/file-csv.svg";
+    case "txt":
+      return "/file-txt.svg";
+    case "xls":
+    case "xlsx":
+      return "file-document.svg";
+    case "svg":
+      return "file-image.svg";
+    case "mkv":
+    case "mov":
+    case "avi":
+    case "wmv":
+    case "mp4":
+    case "flv":
+    case "webm":
+    case "m4v":
+    case "3gp":
+      return "file-video.svg";
+    case "mp3":
+    case "mpeg":
+    case "wav":
+    case "aac":
+    case "flac":
+    case "ogg":
+    case "wma":
+    case "m4a":
+    case "aiff":
+    case "alac":
+      return "file-audio.svg";
+    default:
+      switch (type) {
+        case "image":
+          return "/file-image.svg";
+        case "video":
+          return "/file-video.svg";
+        case "audio":
+          return "/file-audio.svg";
+        case "document":
+          return "/file-document.svg";
+        default:
+          return "/file-other.svg";
+      }
+  }
+};
+
+
+export const constructFileUrl = (bucketFileId: string) => {
+  return `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}/storage/buckets/${process.env.NEXT_PUBLIC_APPWRITE_BUCKET}/files/${bucketFileId}/view?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT}`;
+};
