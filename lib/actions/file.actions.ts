@@ -10,6 +10,7 @@ const handleError = (error: unknown, message: string) => {
 import { createAdminClient, createSessionClient } from "@/lib/appwrite";
 import { getFileType, constructFileUrl, parseStringify } from "../utils";
 import { revalidatePath } from "next/cache";
+import { stat } from "fs";
 
 export const uploadFile = async ({
   file,
@@ -115,5 +116,24 @@ export const updateFileUsers = async ({fileId,emails,path}: UpdateFileUsersProps
     return parseStringify(updatedFile);
   }catch(error){
     handleError(error, "Failed to update file users")
+  }
+}
+
+export const deleteFile = async ({fileId,path,bucketFileId}: DeleteFileProps) => {
+  const {storage,databases} = await createAdminClient();
+  try{
+    const deletedFile= await databases.deleteDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.filesCollectionId,
+      fileId
+    );
+    if(deletedFile){
+      await storage.deleteFile(appwriteConfig.bucketId, bucketFileId);
+    }
+    
+    revalidatePath(path);
+    return parseStringify({status: "success"});
+  }catch(error){
+    handleError(error, "Failed to delete file")
   }
 }

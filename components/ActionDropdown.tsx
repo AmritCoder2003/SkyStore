@@ -29,9 +29,9 @@ import {
 } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { renameFile , updateFileUsers } from "@/lib/actions/file.actions";
+import { renameFile, updateFileUsers , deleteFile } from "@/lib/actions/file.actions";
 import { usePathname } from "next/navigation";
-import { FileDetails , ShareInput } from "./ActionsModalContent";
+import { FileDetails, ShareInput } from "./ActionsModalContent";
 
 import { set } from "react-hook-form";
 const actionDropdownItems = [
@@ -90,7 +90,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
             extension: file.extension,
             path,
           });
-          return true; 
+          return true;
         } catch (error) {
           console.error(error);
           return false;
@@ -103,12 +103,21 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
             emails,
             path,
           });
-          return true; 
+          return true;
         } catch (error) {
           console.error(error);
           return false;
         }
-      }
+      },
+      delete: async () => {
+        try {
+          await deleteFile({fileId: file.$id, path, bucketFileId: file.bucketFileId});
+          return true;
+        } catch (error) {
+          console.error(error);
+          return false;
+        }
+      },
     };
     success = await actions[action.value as keyof typeof actions]();
     if (success) {
@@ -118,13 +127,13 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
   };
 
   const handleRemoveUser = async (email: string) => {
-    const newEmails= emails.filter((e) => e !== email);
+    const newEmails = emails.filter((e) => e !== email);
     const success = await updateFileUsers({
       fileId: file.$id,
       emails: newEmails,
       path,
-    })
-    if(success){
+    });
+    if (success) {
       setEmails(newEmails);
     }
     closeAllModals();
@@ -155,6 +164,12 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
               onInputChange={setEmails}
               onRemove={handleRemoveUser}
             />
+          )}
+          {value === "delete" && (
+            <p className="delete-confirmation" >
+              Are you sure you want to delete {` `}
+              <span className="delete-file-name">{file.name}</span>?
+            </p>
           )}
         </DialogHeader>
         {["rename", "delete", "share"].includes(value) && (
