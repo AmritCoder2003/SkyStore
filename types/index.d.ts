@@ -11,6 +11,11 @@ declare interface SearchParamProps {
   params?: Promise<SegmentParams>;
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
+declare interface ActionType {
+  label: string;
+  icon:  React.FC<React.SVGProps<SVGSVGElement>>;
+  value: string;
+}
 
 declare interface GetFilesProps {
   types: FileType[];
