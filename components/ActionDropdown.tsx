@@ -33,7 +33,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { renameFile } from "@/lib/actions/file.actions";
 import { usePathname } from "next/navigation";
-
+import { FileDetails } from "./ActionsModalContent";
 const actionDropdownItems = [
   {
     label: "Rename",
@@ -76,7 +76,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     setName(file.name);
   };
 
-  const handleAction =async (action: ActionType) => {
+  const handleAction = async (action: ActionType) => {
     if (!action) return;
     setIsLoading(true);
     let success = false;
@@ -95,9 +95,8 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
           return false; // Failure
         }
       },
-      
     };
-    success = await actions[action.value as keyof typeof actions ]();
+    success = await actions[action.value as keyof typeof actions]();
     if (success) {
       closeAllModals();
     }
@@ -122,6 +121,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
               }}
             />
           )}
+          {value === "details" && <FileDetails file={file} />}
         </DialogHeader>
         {["rename", "delete", "share"].includes(value) && (
           <DialogFooter className="flex flex-col gap-3 md:flex-row ">
