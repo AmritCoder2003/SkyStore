@@ -7,7 +7,7 @@ import {Query , ID} from 'node-appwrite';
 import { parseStringify } from '@/lib/utils';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { error } from 'console';
+
 // ** create account flow **
 // 1. User enters full name and email
 // 2. Check if the user already exist using the email (we will use this identify if we will neet to create a new user document or not )
